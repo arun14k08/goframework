@@ -8,7 +8,12 @@ import (
 
 type Prop struct {
 	ServerPort string
-	DBUrl string
+	DBHost     string
+	DBPort     string
+	DBUser     string
+	DBPassword string
+	DBName     string
+	DBUrl 	   string
 }
 
 var AppProp Prop
@@ -21,6 +26,12 @@ func InitializeAppProps() {
 
 	AppProp = Prop{
 		ServerPort: getEnv("SERVER_PORT", "8080"),
+		DBHost:     getEnv("DB_HOST", "localhost"),
+		DBPort:     getEnv("DB_PORT", "5432"),
+		DBUser:     getEnv("DB_USER", "postgres"),
+		DBPassword: getEnv("DB_PASSWORD", "postgres"),
+		DBName:     getEnv("DB_NAME", "local_db"),
+		DBUrl: 		getEnv("DB_URL", "postgres://root:pass@localhost:5432/finance_tracker?sslmode=disable"),
 	}
 }
 
