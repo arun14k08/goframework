@@ -14,6 +14,7 @@ type Prop struct {
 	DBPassword string
 	DBName     string
 	DBUrl 	   string
+	JwtSecret string
 }
 
 var AppProp Prop
@@ -32,6 +33,7 @@ func InitializeAppProps() {
 		DBPassword: getEnv("DB_PASSWORD", "postgres"),
 		DBName:     getEnv("DB_NAME", "local_db"),
 		DBUrl: 		getEnv("DB_URL", "postgres://root:pass@localhost:5432/finance_tracker?sslmode=disable"),
+		JwtSecret:  getEnv("JWT_SECRET", ""),
 	}
 }
 
