@@ -20,9 +20,11 @@ type Prop struct {
 var AppProp Prop
 
 func InitializeAppProps() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error while loading environment variables")
+		// Load .env only in local dev
+	if os.Getenv("RAILWAY_ENVIRONMENT") == "" {
+		if err := godotenv.Load(); err != nil {
+			log.Println("No .env file found, using system environment")
+		}
 	}
 
 	AppProp = Prop{
